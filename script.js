@@ -1,7 +1,7 @@
-// Detectar si es dispositivo móvil
+
 const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
 
-// Crear pétalos animados
+
 function createPetal() {
     const petals = document.querySelector('.petals');
     const petal = document.createElement('div');
@@ -28,7 +28,6 @@ function createPetal() {
     }, duration * 1000);
 }
 
-// Crear corazones que flotan
 function createHearts() {
     const heart = document.createElement('div');
     heart.style.position = 'fixed';
@@ -51,7 +50,7 @@ function createHearts() {
     }, duration * 1000);
 }
 
-// Event listener para el botón
+
 function handleClick() {
     const messages = [
         '¡Gracias por ser tan increíble, Esme! ✨',
@@ -64,7 +63,7 @@ function handleClick() {
     const randomMessage = messages[Math.floor(Math.random() * messages.length)];
     alert(randomMessage);
     
-    // Crear muchos pétalos cuando se hace clic
+
     const petalCount = isMobile ? 5 : 10;
     for (let i = 0; i < petalCount; i++) {
         setTimeout(() => {
@@ -73,18 +72,18 @@ function handleClick() {
     }
 }
 
-// Iniciar animaciones con velocidades diferentes según el dispositivo
+
 if (isMobile) {
-    // En móvil: reducir la frecuencia de animaciones
+
     setInterval(createPetal, 600);
     setInterval(createHearts, 500);
 } else {
-    // En desktop: velocidad normal
+
     setInterval(createPetal, 400);
     setInterval(createHearts, 300);
 }
 
-// Hacer que los pétalos sigan el movimiento del mouse (solo en desktop)
+
 if (!isMobile) {
     document.addEventListener('mousemove', (e) => {
         const petals = document.querySelectorAll('.petals > div');
