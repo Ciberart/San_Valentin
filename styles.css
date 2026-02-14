@@ -110,7 +110,6 @@ body {
     width: 200%;
     height: 200%;
     background: linear-gradient(45deg, transparent 30%, rgba(255,255,255,0.1) 50%, transparent 70%);
-    animation: shine 3s infinite;
 }
 
 @keyframes shine {
@@ -439,4 +438,149 @@ strong {
         font-size: 2rem;
         margin-bottom: 10px;
     }
+}
+/* Modal */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(5px);
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    animation: fadeIn 0.3s ease;
+}
+
+.modal.active {
+    display: flex;
+}
+
+.modal-content {
+    background: linear-gradient(135deg, #fff 0%, #fff5f7 50%, #ffe0eb 100%);
+    padding: 50px 40px;
+    border-radius: 30px;
+    text-align: center;
+    max-width: 450px;
+    box-shadow: 
+        0 25px 50px rgba(255, 71, 87, 0.3),
+        0 0 0 3px rgba(255, 107, 157, 0.2),
+        inset 0 1px 0 rgba(255, 255, 255, 0.6);
+    animation: slideUp 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+    border: 3px solid rgba(255, 107, 157, 0.4);
+    position: relative;
+    overflow: hidden;
+}
+
+.modal-content::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: 
+        radial-gradient(circle at 20% 50%, rgba(255, 182, 193, 0.3) 0%, transparent 50%),
+        radial-gradient(circle at 80% 80%, rgba(255, 105, 180, 0.2) 0%, transparent 50%);
+}
+
+.modal-content::after {
+    display: none;
+}
+
+.modal-heart {
+    font-size: 5rem;
+    margin-bottom: 25px;
+    animation: heartBeat 1.2s ease infinite, float 4s ease-in-out infinite;
+    display: inline-block;
+    text-shadow: 0 0 20px rgba(255, 71, 87, 0.5);
+}
+
+.modal-message {
+    font-size: 1.4rem;
+    color: #ff6b9d;
+    font-weight: 700;
+    margin-bottom: 30px;
+    line-height: 1.8;
+    font-family: 'Playfair Display', serif;
+    letter-spacing: 1px;
+    text-shadow: 0 2px 4px rgba(255, 71, 87, 0.15);
+    position: relative;
+    z-index: 2;
+    animation: fadeInText 0.6s ease 0.2s both;
+}
+
+.modal-btn {
+    background: linear-gradient(135deg, #ff6b9d 0%, #ff9a9e 100%);
+    color: white;
+    border: none;
+    padding: 15px 40px;
+    border-radius: 30px;
+    font-size: 1.1rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    box-shadow: 
+        0 10px 25px rgba(255, 71, 87, 0.4),
+        0 0 0 0 rgba(255, 71, 87, 0.4);
+    position: relative;
+    z-index: 2;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.modal-btn:hover {
+    transform: translateY(-5px) scale(1.05);
+    box-shadow: 
+        0 15px 35px rgba(255, 71, 87, 0.5),
+        0 0 30px rgba(255, 71, 87, 0.3);
+}
+
+.modal-btn:active {
+    transform: translateY(-2px) scale(1.02);
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes slideUp {
+    from {
+        transform: translateY(50px) scale(0.9);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0) scale(1);
+        opacity: 1;
+    }
+}
+
+@keyframes fadeInText {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes shine {
+    0% { transform: translate(-50%, -50%) rotate(0deg); }
+    50% { transform: translate(-50%, -50%) rotate(180deg); }
+    100% { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-15px); }
 }

@@ -52,12 +52,27 @@ function createHearts() {
 
 
 function handleClick() {
+    const message = 'Te quiero mucho niña de ojos bonitos ✨';
+    showModal(message);
+
     const petalCount = isMobile ? 5 : 10;
     for (let i = 0; i < petalCount; i++) {
         setTimeout(() => {
             createPetal();
         }, i * 100);
     }
+}
+
+function showModal(message) {
+    const modal = document.getElementById('messageModal');
+    const modalMessage = document.getElementById('modalMessage');
+    modalMessage.textContent = message;
+    modal.classList.add('active');
+}
+
+function closeModal() {
+    const modal = document.getElementById('messageModal');
+    modal.classList.remove('active');
 }
 
 
@@ -82,3 +97,10 @@ if (!isMobile) {
         });
     });
 }
+
+// Cerrar modal al hacer click en el fondo
+document.getElementById('messageModal').addEventListener('click', function(e) {
+    if (e.target === this) {
+        closeModal();
+    }
+});
