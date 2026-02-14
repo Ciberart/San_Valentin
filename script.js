@@ -52,18 +52,6 @@ function createHearts() {
 
 
 function handleClick() {
-    const messages = [
-        '¡Gracias por ser tan increíble, Esme! ✨',
-        '¡Te quiero mucho! 💖',
-        '¡Eres lo mejor que me pasó! 🌹',
-        '¡Feliz día a la persona más especial! 💕',
-        '¡Te amo con todo mi corazón! ❤️'
-    ];
-    
-    const randomMessage = messages[Math.floor(Math.random() * messages.length)];
-    alert(randomMessage);
-    
-
     const petalCount = isMobile ? 5 : 10;
     for (let i = 0; i < petalCount; i++) {
         setTimeout(() => {
